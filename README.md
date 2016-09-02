@@ -1,4 +1,4 @@
-# php-pubsub
+# php-pubsub-redis
 
 A Redis adapter for the [php-pubsub](https://github.com/Superbalist/php-pubsub) package.
 
