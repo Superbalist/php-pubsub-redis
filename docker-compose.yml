@@ -1,0 +1,13 @@
+version: '2'
+services:
+  php-pubsub-redis:
+    build: .
+    depends_on:
+      - "redis"
+    volumes:
+      - ./src:/opt/php-pubsub/src
+      - ./examples:/opt/php-pubsub/examples
+  redis:
+    image: redis:3.2
+    ports:
+      - "6379:6379"
