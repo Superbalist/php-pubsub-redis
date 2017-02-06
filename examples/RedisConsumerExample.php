@@ -7,7 +7,7 @@ $client = new Predis\Client([
     'host' => 'redis',
     'port' => 6379,
     'database' => 0,
-    'read_write_timeout' => 0
+    'read_write_timeout' => 0,
 ]);
 
 $adapter = new \Superbalist\PubSub\Redis\RedisPubSubAdapter($client);
