@@ -43,7 +43,7 @@ class RedisPubSubAdapterTest extends TestCase
         $client->shouldReceive('publish')
             ->withArgs([
                 'channel_name',
-                'a:1:{s:5:"hello";s:5:"world";}'
+                'a:1:{s:5:"hello";s:5:"world";}',
             ])
             ->once();
 
