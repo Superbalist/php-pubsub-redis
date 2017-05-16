@@ -40,6 +40,11 @@ $adapter->publish('my_channel', 'HELLO WORLD');
 $adapter->publish('my_channel', json_encode(['hello' => 'world']));
 $adapter->publish('my_channel', 1);
 $adapter->publish('my_channel', false);
+$messages = [
+    'message 1',
+    'message2',
+];
+$adapter->publish('my_channel', $messages);
 ```
 
 ## Examples

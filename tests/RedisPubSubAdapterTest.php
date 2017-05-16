@@ -50,4 +50,28 @@ class RedisPubSubAdapterTest extends TestCase
         $adapter = new RedisPubSubAdapter($client);
         $adapter->publish('channel_name', ['hello' => 'world']);
     }
+
+    public function testPublishMultiMessages()
+    {
+        $client = Mockery::mock(Client::class);
+        $client->shouldReceive('publish')
+            ->withArgs([
+                'channel_name',
+                'a:1:{s:5:"hello";s:5:"world";}',
+            ])
+            ->once();
+        $client->shouldReceive('publish')
+            ->withArgs([
+                'channel_name',
+                'Hiiiii!',
+            ])
+            ->once();
+
+        $adapter = new RedisPubSubAdapter($client);
+        $messages = [
+            ['hello' => 'world'],
+            'Hiiiii!',
+        ];
+        $adapter->publish('channel_name', $messages);
+    }
 }
