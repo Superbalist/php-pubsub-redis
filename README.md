@@ -37,9 +37,16 @@ $adapter->subscribe('my_channel', function ($message) {
 
 // publish messages
 $adapter->publish('my_channel', 'HELLO WORLD');
-$adapter->publish('my_channel', json_encode(['hello' => 'world']));
+$adapter->publish('my_channel', ['hello' => 'world']);
 $adapter->publish('my_channel', 1);
 $adapter->publish('my_channel', false);
+
+// publish multiple messages
+$messages = [
+    'message 1',
+    'message 2',
+];
+$adapter->publishBatch('my_channel', $messages);
 ```
 
 ## Examples
