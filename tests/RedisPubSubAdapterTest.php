@@ -70,7 +70,7 @@ class RedisPubSubAdapterTest extends TestCase
         $adapter = new RedisPubSubAdapter($client);
         $messages = [
             'message1',
-            'message2'
+            'message2',
         ];
         $adapter->publishBatch('channel_name', $messages);
     }
