@@ -63,4 +63,17 @@ class RedisPubSubAdapter implements PubSubAdapterInterface
     {
         $this->client->publish($channel, Utils::serializeMessage($message));
     }
+
+    /**
+     * Publish multiple messages to a channel.
+     *
+     * @param string $channel
+     * @param array $messages
+     */
+    public function publishBatch($channel, array $messages)
+    {
+        foreach ($messages as $message) {
+            $this->publish($channel, $message);
+        }
+    }
 }
