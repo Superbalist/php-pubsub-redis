@@ -40,9 +40,7 @@ class PhpRedisPubSubAdapter implements PubSubAdapterInterface
     public function subscribe($channel, callable $handler)
     {
         $this->client->subscribe([$channel], function($instance, $channelName, $message) use ($handler) { 
-            if ($message->kind === 'message') {
-                call_user_func($handler, Utils::unserializeMessagePayload($message->payload));
-            }
+            call_user_func($handler, Utils::unserializeMessagePayload($message));
         });
     }
 
